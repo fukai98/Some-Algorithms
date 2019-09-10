@@ -42,12 +42,6 @@ bool GetTop(const SqStack *s, ElemType *e) {
     *e = s->data[s->top];
     return true;
 }
-int main() {
-    SqStack s;
-    StackInit(&s);
-    Push(&s, 1);
-    cout << s.top;
-}
 
 /* 共享栈 */
 typedef struct {
