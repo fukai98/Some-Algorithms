@@ -1,14 +1,10 @@
 # 数据结构常用算法总结
 
-
-
-[TOC]
-
 ### 一、线性表
 
 #### 1. 顺序表
 
-##### 1.1 定义
+-   顺序表结构体定义
 
 ```c++
 #define MAXSIZE 100
@@ -19,9 +15,7 @@ typedef struct {
 } SqList;
 ```
 
-##### 1.2 基本操作
-
--   **顺序表的插入**
+-   **插入**
 
 ```c++
 // 在顺序表L的第i个位置处插入新的元素e
@@ -37,7 +31,7 @@ bool ListInsert(SqList *L, int i, ElemType e) {
 }
 ```
 
--   **顺序表的删除**
+-   **删除**
 
 ```c++
 // 删除顺序表L第i个位置上的元素，并赋值给e
@@ -78,9 +72,7 @@ typedef struct LNode {
 } LNode, *LinkList;
 ```
 
-##### 2.2 基本操作
-
--   **单链表的插入**
+##### 2.2 基本操作单链表的插入
 
 ```c++
 // 头插法建立单链表，将数组a中元素传入单链表
@@ -124,7 +116,7 @@ bool ListInsert(LinkList *L, int i, ElemType e) {
 }
 ```
 
--   **单链表的删除**
+##### 2.3 单链表的删除
 
 ```c++
 // 删除L的第i个结点，并用e返回
@@ -152,7 +144,7 @@ void ListClear(LinkList *L) {
 }
 ```
 
--   **单链表元素的查找**
+##### 2.4 单链表元素的查找
 
 ```C++
 // 返回第i个元素的结点的指针
@@ -173,11 +165,15 @@ LNode *LocateElem(LinkList L, ElemType e) {
 }
 ```
 
+
+
+
+
 ### 二、栈
 
 #### 1. 顺序栈
 
-##### 1.1 定义
+##### 1.1 顺序栈的结构体定义
 
 ```c
 #define MaxSize 50     // 定义占中最大元素个数
@@ -188,18 +184,17 @@ typedef struct {
 } SqStack;
 ```
 
-##### 1.2 基本操作
-
--   **初始化**
+##### 1.2 初始化
 
 ```c
 void StackInit(SqStack *s) { s->top = -1; }
 ```
 
--   **判断栈空**
-    -   函数间的参数传递本质是单向的变量拷贝
-    -   此处使用指针是为了降低复制大型对象造成的额外负担
-    -   使用const以防止修改变量
+##### 1.3 判断栈空
+
+-   函数间的参数传递本质是单向的变量拷贝
+-   此处使用指针是为了降低复制大型对象造成的额外负担
+-   使用const以防止修改变量
 
 ```c
 bool StackEmpty(const SqStack *s) {
@@ -211,7 +206,7 @@ bool StackEmpty(const SqStack *s) {
 }
 ```
 
--   **进栈**
+##### 1.4 进栈
 
 ```c
 bool Push(SqStack *s, ElemType e) {
@@ -221,7 +216,7 @@ bool Push(SqStack *s, ElemType e) {
 }
 ```
 
--   **出栈**
+##### 1.5 出栈
 
 ```c
 bool Pop(SqStack *s, ElemType *e) {
@@ -231,7 +226,7 @@ bool Pop(SqStack *s, ElemType *e) {
 }
 ```
 
--   **读取栈顶元素**
+##### 1.6 读取栈顶元素
 
 ```c
 bool GetTop(const SqStack *s, ElemType *e) {
@@ -245,7 +240,7 @@ bool GetTop(const SqStack *s, ElemType *e) {
 
 #### 2. 共享栈
 
-##### 2.1 定义
+##### 2.1 共享栈结构体定义
 
 ```c
 typedef struct {
@@ -255,9 +250,7 @@ typedef struct {
 } SqDoubleStack;
 ```
 
-##### 2.2 基本操作
-
--   **进栈**
+##### 2.2 进栈
 
 ```c
 bool Push(SqDoubleStack *s, ElemType e, int n) {
@@ -271,7 +264,7 @@ bool Push(SqDoubleStack *s, ElemType e, int n) {
 }
 ```
 
--   **出栈**
+##### 2.3 出栈
 
 ```c
 bool Pop(SqDoubleStack *s, ElemType *e, int n) {
@@ -286,11 +279,11 @@ bool Pop(SqDoubleStack *s, ElemType *e, int n) {
 }
 ```
 
-
+##### 
 
 #### 3. 链栈
 
-##### 3.1 定义
+##### 3.1 链栈结构体定义
 
 ```c
 typedef struct StackNode {
@@ -299,9 +292,7 @@ typedef struct StackNode {
 } StackNode, *LinkStackPtr;
 ```
 
-##### 3.2 基本操作
-
--   **进栈**
+##### 3.2 进栈
 
 ```c
 bool Push(LinkStack *s, ElemType e) {
@@ -314,7 +305,7 @@ bool Push(LinkStack *s, ElemType e) {
 }
 ```
 
--   **出栈**
+##### 3.3 出栈
 
 ```c
 bool Pop(LinkStack *s, ElemType *e) {
