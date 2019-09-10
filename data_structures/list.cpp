@@ -1,7 +1,9 @@
 /*
  数据结构常用算法总结
+ 链表
 */
-#include "stdlib.h"
+#include <stdlib.h>
+using namespace std;
 
 /* 顺序表 */
 #define MAXSIZE 100
