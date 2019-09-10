@@ -4,7 +4,7 @@
 
 #### 1. 顺序表
 
--   顺序表结构体定义
+1.1 顺序表结构体定义
 
 ```c++
 #define MAXSIZE 100
@@ -15,7 +15,7 @@ typedef struct {
 } SqList;
 ```
 
--   **插入**
+-   顺序表的插入
 
 ```c++
 // 在顺序表L的第i个位置处插入新的元素e
@@ -31,7 +31,7 @@ bool ListInsert(SqList *L, int i, ElemType e) {
 }
 ```
 
--   **删除**
+-   顺序表的删除
 
 ```c++
 // 删除顺序表L第i个位置上的元素，并赋值给e
@@ -46,7 +46,7 @@ bool ListDelete(SqList *L, int i, ElemType *e) {
 }
 ```
 
--   **获取顺序表指定元素的位置**
+-   获取顺序表指定元素的位置
 
 ```c++
 // 返回指定元素在顺序表中的位置i
@@ -62,7 +62,7 @@ int LocateElem(const SqList *L, ElemType e) {
 
 #### 2. 单链表
 
-##### 2.1 定义
+-   单链表结构体定义
 
 ```c++
 /* 链表(具有头结点) */
@@ -72,7 +72,7 @@ typedef struct LNode {
 } LNode, *LinkList;
 ```
 
-##### 2.2 基本操作单链表的插入
+-   单链表的插入
 
 ```c++
 // 头插法建立单链表，将数组a中元素传入单链表
@@ -116,7 +116,7 @@ bool ListInsert(LinkList *L, int i, ElemType e) {
 }
 ```
 
-##### 2.3 单链表的删除
+-   单链表的删除
 
 ```c++
 // 删除L的第i个结点，并用e返回
@@ -144,7 +144,7 @@ void ListClear(LinkList *L) {
 }
 ```
 
-##### 2.4 单链表元素的查找
+-   单链表元素的查找
 
 ```C++
 // 返回第i个元素的结点的指针
@@ -216,7 +216,7 @@ bool Push(SqStack *s, ElemType e) {
 }
 ```
 
-##### 1.5 出栈
+出栈
 
 ```c
 bool Pop(SqStack *s, ElemType *e) {
