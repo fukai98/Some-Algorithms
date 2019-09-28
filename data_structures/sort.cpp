@@ -4,8 +4,8 @@
 #include <iostream>
 using namespace std;
 
-typedef int ElemType;
-#define MAXSIZE 100000
+typedef int ElemType;   // 定义关键字类型
+#define MAXSIZE 100000  // 定义序列大小
 // 交换函数
 inline void swap(ElemType *a, ElemType *b) {
     ElemType temp = *a;
@@ -36,7 +36,7 @@ void BInsertSort(ElemType a[], int len) {
             temp = a[i];
             low = 0;
             high = i - 1;
-            while (low < high) {
+            while (low <= high) {  // 折半查找
                 mid = (high + low) / 2;
                 if (a[mid] > temp) {
                     high = mid - 1;
@@ -144,6 +144,36 @@ void HeapSort(ElemType a[], int len) {
     }
 }
 /* 其他排序方法 */
+// 归并排序
+void Merge(ElemType a[], ElemType temp_a[], int left, int mid, int right) {
+    // 将有序的a[left]~a[mid]和a[mid+1]~a[right]归并成一个有序序列
+    int i, j, k;
+    for (i = left; i <= right; ++i) temp_a[i] = a[i];
+    for (i = left, j = mid + 1, k = i; i <= mid && j <= right; ++k) {
+        if (temp_a[i] <= temp_a[j]) {
+            a[k] = temp_a[i++];
+        } else {
+            a[k] = temp_a[j++];
+        }
+    }
+    while (i <= mid) a[k++] = temp_a[i++];
+    while (j <= right) a[k++] = a[j++];
+}
+void MSort(ElemType a[], ElemType temp_a[], int left, int right) {
+    // 递归地将a[left]～a[right]排序
+    if (left < right) {
+        MSort(a, temp_a, left, (left + right) / 2);
+        MSort(a, temp_a, (left + right) / 2 + 1, right);
+        Merge(a, temp_a, left, (left + right) / 2, right);
+    }
+}
+void MergeSort(ElemType a[], int len) {
+    // 归并排序
+    ElemType *temp_a;
+    temp_a = (ElemType *)malloc(len * sizeof(ElemType));
+    MSort(a, temp_a, 0, len - 1);
+    free(temp_a);
+}
 
 clock_t Start, End;
 int main() {
@@ -162,8 +192,9 @@ int main() {
     // BInsertSort(a, MAXSIZE);
     // ShellSort(a, MAXSIZE, Incre, 10);
     // BubbleSort(a, MAXSIZE);
-    QuickSort(a, MAXSIZE);
-    // sort(a,a+MAXSIZE);
+    // QuickSort(a, MAXSIZE);
+    // MergeSort(a, MAXSIZE);
+    // sort(a, a + MAXSIZE);
     End = clock();
     cout << endl << "排序时间为：" << (double)(End - Start) / CLOCKS_PER_SEC << "秒" << endl << "排序后数据：";
     for (int i = 0; i < MAXSIZE; ++i) {
